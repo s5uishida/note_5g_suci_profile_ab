@@ -3,7 +3,7 @@
 <h2 id="open5gs">udm.yaml of Open5GS</h2>
 
 As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile A/B Scheme, the comment in [udm.yaml.in](https://github.com/open5gs/open5gs/blob/main/configs/open5gs/udm.yaml.in) of Open5GS is very helpful.
-```
+```yaml
 ...
 #
 #  <Home Network Public Key>
@@ -39,7 +39,7 @@ As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile
 <h2 id="free5GC">udmcfg.yaml of free5GC</h2>
 
 For free5GC, there are setting items in [udmcfg.yaml](https://github.com/free5gc/free5gc/blob/main/config/udmcfg.yaml).
-```
+```yaml
 ...
   # test data set from TS33501-f60 Annex C.4
   SuciProfile: # Home Network Public Key ID = slice index +1
@@ -56,7 +56,7 @@ For free5GC, there are setting items in [udmcfg.yaml](https://github.com/free5gc
 
 In addition, [UERANSIM](https://github.com/aligungr/UERANSIM/tree/master/config) supported 5G SUCI Profile A Scheme on 2023.05.09.
 UERANSIM can use 5G SUCI Profile A Scheme with Open5GS and free5GC.
-```
+```yaml
 ...
 # SUCI Protection Scheme : 0 for Null-scheme, 1 for Profile A and 2 for Profile B
 protectionScheme: 0
