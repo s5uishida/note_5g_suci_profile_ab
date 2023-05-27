@@ -35,6 +35,11 @@ As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile
 #
 ...
 ```
+For example, from `curve25519-1.key`, get the public key to be set to `homeNetworkPublicKey` in the UE configuration of UERANSIM as follows.
+```
+# openssl pkey -in curve25519-1.key -text_pub -noout | sed '/^[X25519|pub]/d' | tr -d "\n: " | sed '$a\'
+e421686f6fb2d70e3fa28d940494095686c3179fef53514667a6ed106b8a7d3d
+```
 
 <h2 id="free5GC">udmcfg.yaml of free5GC</h2>
 
