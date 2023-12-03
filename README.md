@@ -1,5 +1,11 @@
 # A Note for 5G SUCI Profile A/B Scheme
 
+---
+
+### [Sample Configurations and Miscellaneous for Mobile Network](https://github.com/s5uishida/sample_config_misc_for_mobile_network)
+
+---
+
 <a id="open5gs"></a>
 
 ## udm.yaml of Open5GS
