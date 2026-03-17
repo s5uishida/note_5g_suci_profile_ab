@@ -43,10 +43,39 @@ As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile
 #
 ...
 ```
-For example, from `curve25519-1.key`, get the public key to be set to `homeNetworkPublicKey` in the UE configuration of UERANSIM as follows.
+
+<a id="open5gs_a"></a>
+
+### Profile A
+
+For example, from `curve25519-1.key`, get the public key to be set to `homeNetworkPublicKey` in the UE configuration of UERANSIM and PacketRusher as follows.
 ```
-# openssl pkey -in curve25519-1.key -text_pub -noout | sed '/^[X25519|pub]/d' | tr -d "\n: " | sed '$a\'
+# openssl pkey -in curve25519-1.key -text_pub -noout 2> /dev/null | sed -n '/^pub:/,+3p' | tail -3 | tr -d "\n: " | sed '$a\'
 e421686f6fb2d70e3fa28d940494095686c3179fef53514667a6ed106b8a7d3d
+```
+
+<a id="open5gs_b"></a>
+
+### Profile B
+
+<a id="open5gs_b_compress_pub_key"></a>
+
+#### Get compressed public key
+
+For example, from `secp256r1-2.key`, get the compressed public key as follows.
+```
+# openssl ec -in secp256r1-2.key -conv_form compressed -text -noout 2> /dev/null | sed -n '/^pub:/,+3p' | tail -3 | tr -d "\n: " | sed '$a\'
+03adefcd1317d1ce8562ec25b91b4800120e1236d6e2661ea4235a84e3c85da244
+```
+
+<a id="open5gs_b_uncompress_pub_key"></a>
+
+#### Get uncompressed public key
+
+For example, from `secp256r1-2.key`, get the uncompressed public key to be set to `homeNetworkPublicKey` in the UE configuration of PacketRusher as follows.
+```
+# openssl ec -in secp256r1-2.key -conv_form uncompressed -text -noout 2> /dev/null | sed -n '/^pub:/,+5p' | tail -5 | tr -d "\n: " | sed '$a\'
+04adefcd1317d1ce8562ec25b91b4800120e1236d6e2661ea4235a84e3c85da244bc42a594cf5612f49e8fbe2857d8e499f91322c737fccf1bbdb6e4d424a80a95
 ```
 
 <a id="free5GC"></a>
@@ -71,7 +100,7 @@ For free5GC, there are setting items in [udmcfg.yaml](https://github.com/free5gc
 
 ## xxx-ue.yaml of UERANSIM
 
-In addition, [UERANSIM](https://github.com/aligungr/UERANSIM/tree/master/config) supported 5G SUCI Profile A Scheme on 2023.05.09.
+[UERANSIM](https://github.com/aligungr/UERANSIM/tree/master/config) supported 5G SUCI Profile A Scheme on 2023.05.09.
 UERANSIM can use 5G SUCI Profile A Scheme with Open5GS and free5GC.
 ```yaml
 ...
@@ -83,5 +112,33 @@ homeNetworkPublicKey: '5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4e
 homeNetworkPublicKeyId: 1
 # Routing Indicator
 routingIndicator: '0000'
+...
+```
+
+<a id="packetrusher"></a>
+
+## config.yml of PacketRusher
+
+[PacketRusher](https://github.com/HewlettPackard/PacketRusher/tree/main/config) supported 5G SUCI Profile A/B Schemes (uncompressed public keys).
+```yaml
+...
+# In 5G, the UE's identity to the AMF as a SUCI (Subscription Concealed Identifier)
+#
+# SUCI format is suci-<supi_type>-<MCC>-<MNC>-<routing_indicator>-<protection_scheme>-<public_key_id>-<scheme_output>
+# With default configuration, SUCI sent to AMF will be suci-0-999-70-0000-0-0-0000000120
+#
+# SUCI Routing Indicator allows the AMF to route the UE to the correct UDM
+routingindicator: "0000"
+#
+# SUCI Protection Scheme: 0 for Null-scheme, 1 for Profile A and 2 for Profile B
+protectionScheme: 0
+#
+# Home Network Public Key
+# Ignored with default Null-Scheme configuration
+homeNetworkPublicKey: "5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650"
+#
+# Home Network Public Key ID
+# Ignored ith default Null-Scheme configuration
+homeNetworkPublicKeyID: 1
 ...
 ```
