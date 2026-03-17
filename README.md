@@ -119,7 +119,7 @@ routingIndicator: '0000'
 
 ## config.yml of PacketRusher
 
-[PacketRusher](https://github.com/HewlettPackard/PacketRusher/tree/main/config) supported 5G SUCI Profile A/B Schemes (uncompressed public keys).
+[PacketRusher](https://github.com/HewlettPackard/PacketRusher/tree/main/config) supports 5G SUCI Profile A/B Schemes (uncompressed public keys).
 ```yaml
 ...
 # In 5G, the UE's identity to the AMF as a SUCI (Subscription Concealed Identifier)
