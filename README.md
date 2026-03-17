@@ -122,23 +122,23 @@ routingIndicator: '0000'
 [PacketRusher](https://github.com/HewlettPackard/PacketRusher/tree/main/config) supports 5G SUCI Profile A/B Scheme (uncompressed public keys).
 ```yaml
 ...
-# In 5G, the UE's identity to the AMF as a SUCI (Subscription Concealed Identifier)
-#
-# SUCI format is suci-<supi_type>-<MCC>-<MNC>-<routing_indicator>-<protection_scheme>-<public_key_id>-<scheme_output>
-# With default configuration, SUCI sent to AMF will be suci-0-999-70-0000-0-0-0000000120
-#
-# SUCI Routing Indicator allows the AMF to route the UE to the correct UDM
-routingindicator: "0000"
-#
-# SUCI Protection Scheme: 0 for Null-scheme, 1 for Profile A and 2 for Profile B
-protectionScheme: 0
-#
-# Home Network Public Key
-# Ignored with default Null-Scheme configuration
-homeNetworkPublicKey: "5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650"
-#
-# Home Network Public Key ID
-# Ignored ith default Null-Scheme configuration
-homeNetworkPublicKeyID: 1
+  # In 5G, the UE's identity to the AMF as a SUCI (Subscription Concealed Identifier)
+  #
+  # SUCI format is suci-<supi_type>-<MCC>-<MNC>-<routing_indicator>-<protection_scheme>-<public_key_id>-<scheme_output>
+  # With default configuration, SUCI sent to AMF will be suci-0-999-70-0000-0-0-0000000120
+  #
+  # SUCI Routing Indicator allows the AMF to route the UE to the correct UDM
+  routingindicator: "0000"
+  #
+  # SUCI Protection Scheme: 0 for Null-scheme, 1 for Profile A and 2 for Profile B
+  protectionScheme: 0
+  #
+  # Home Network Public Key
+  # Ignored with default Null-Scheme configuration
+  homeNetworkPublicKey: "5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650"
+  #
+  # Home Network Public Key ID
+  # Ignored ith default Null-Scheme configuration
+  homeNetworkPublicKeyID: 1
 ...
 ```
