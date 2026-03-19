@@ -46,7 +46,7 @@ As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile
 
 <a id="open5gs_a"></a>
 
-### Profile A Scheme
+### Profile A Scheme (EC domain parameters : Curve25519 - 3GPP TS 33.501 Annex C.3.4.1)
 
 For example, from `curve25519-1.key`, get the public key to be set to `homeNetworkPublicKey` in the UE configuration of UERANSIM and PacketRusher as follows.
 ```
@@ -56,7 +56,7 @@ e421686f6fb2d70e3fa28d940494095686c3179fef53514667a6ed106b8a7d3d
 
 <a id="open5gs_b"></a>
 
-### Profile B Scheme
+### Profile B Scheme (EC domain parameters : secp256r1 - 3GPP TS 33.501 Annex C.3.4.2)
 
 <a id="open5gs_b_compress_pub_key"></a>
 
