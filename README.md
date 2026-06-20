@@ -11,7 +11,7 @@ In my environment, I briefly confirmed that SUCI Profile A/B Scheme works for th
 | UERANSIM(+[patch](https://github.com/aligungr/UERANSIM/pull/791)) | OK | OK | OK |
 | PacketRusher | OK | -- | OK |
 
-1. Curve25519 uses only compressed public keys.
+1. Curve25519 uses only compressed public keys as its public key.
 
 ---
 
