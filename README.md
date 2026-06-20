@@ -1,5 +1,18 @@
 # A Note for 5G SUCI Profile A/B Scheme
 
+In my environment, I briefly confirmed that SUCI Profile A/B Scheme works for the following UDMs and UEs.
+| UDM | Profile A | Profile B |
+| --- | --- | --- |
+| Open5GS | OK | OK |
+| free5GC | OK | OK |
+
+| UE | Profile A [1]<br>&nbsp; | Profile B<br>*compressed public key* | <br>*uncompressed public key* |
+| --- | --- | --- | --- |
+| UERANSIM(+[patch](https://github.com/aligungr/UERANSIM/pull/791)) | OK | OK | OK |
+| PacketRusher | OK | -- | OK |
+
+1. Curve25519 uses only compressed public keys.
+
 ---
 
 ### [Sample Configurations and Miscellaneous for Mobile Network](https://github.com/s5uishida/sample_config_misc_for_mobile_network)
