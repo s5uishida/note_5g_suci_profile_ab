@@ -8,7 +8,7 @@ In my environment, I briefly confirmed that SUCI Profile A/B Scheme works for th
 
 | UE | Profile A [1]<br>&nbsp; | Profile B<br>*compressed public key* | <br>*uncompressed public key* |
 | --- | --- | --- | --- |
-| UERANSIM(+[patch](https://github.com/aligungr/UERANSIM/pull/791)) | OK | OK | OK |
+| UERANSIM | OK | OK | OK |
 | PacketRusher | OK | N/A | OK |
 
 1. Curve25519 uses only compressed public keys as its public key.
