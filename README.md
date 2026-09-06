@@ -26,33 +26,45 @@ In my environment, I briefly confirmed that SUCI Profile A/B Scheme works for th
 As of 2023.05.14, for the setting of Home Network Public Key for 5G SUCI Profile A/B Scheme, the comment in [udm.yaml.in](https://github.com/open5gs/open5gs/blob/main/configs/open5gs/udm.yaml.in) of Open5GS is very helpful.
 ```yaml
 ...
-#
-#  <Home Network Public Key>
-#
+################################################################################
+# Home Network Public Key
+################################################################################
 #  o Generate the private key as below.
-#    $ openssl genpkey -algorithm X25519 -out /etc/open5gs/hnet/curve25519-1.key
-#    $ openssl ecparam -name prime256v1 -genkey -conv_form compressed -out /etc/open5gs/hnet/secp256r1-2.key
+#  $ openssl genpkey -algorithm X25519 -out /etc/open5gs/hnet/curve25519-1.key
+#  $ openssl ecparam -name prime256v1 -genkey -conv_form compressed -out /etc/open5gs/hnet/secp256r1-2.key
 #
 #  o The private and public keys can be viewed with the command.
 #    The public key is used when creating the SIM.
-#    $ openssl pkey -in /etc/open5gs/hnet/curve25519-1.key -text
-#    $ openssl ec -in /etc/open5gs/hnet/secp256r1-2.key -conv_form compressed -text
+#  $ openssl pkey -in /etc/open5gs/hnet/curve25519-1.key -text
+#  $ openssl ec -in /etc/open5gs/hnet/secp256r1-2.key -conv_form compressed -text
 #
 #  o Home network public key identifier(PKI) value : 1
 #    Protection scheme identifier : ECIES scheme profile A
-#  udm:
-#    hnet:
-#      - id: 1
-#        scheme: 1
-#        key: /etc/open5gs/hnet/curve25519-1.key
+#  hnet:
+#    - id: 1
+#      scheme: 1
+#      key: /etc/open5gs/hnet/curve25519-1.key
 #
 #  o Home network public key identifier(PKI) value : 2
 #    Protection scheme identifier : ECIES scheme profile B
-#  udm:
-#    hnet:
-#      - id: 2
-#        scheme: 2
-#        key: /etc/open5gs/hnet/secp256r1-2.key
+#  hnet:
+#    - id: 2
+#      scheme: 2
+#      key: /etc/open5gs/hnet/secp256r1-2.key
+#
+#  o Home network public key identifier(PKI) value : 3
+#    Protection scheme identifier : ECIES scheme profile A
+#  hnet:
+#    - id: 3
+#      scheme: 1
+#      key: /etc/open5gs/hnet/curve25519-1.key
+#
+#  o Home network public key identifier(PKI) value : 4
+#    Protection scheme identifier : ECIES scheme profile B
+#  hnet:
+#    - id: 4
+#      scheme: 2
+#      key: /etc/open5gs/hnet/secp256r1-2.key
 #
 ...
 ```
@@ -119,9 +131,11 @@ UERANSIM can use 5G SUCI Profile A Scheme with Open5GS and free5GC.
 ...
 # SUCI Protection Scheme : 0 for Null-scheme, 1 for Profile A and 2 for Profile B
 protectionScheme: 0
-# Home Network Public Key for protecting with SUCI Profile A
+# Home Network Public Key for protecting with SUCI
+# Profile A: 64 hex characters, a 32 byte X25519 public key
+# Profile B: 66 hex characters compressed, or 130 uncompressed, a secp256r1 public key
 homeNetworkPublicKey: '5a8d38864820197c3394b92613b20b91633cbd897119273bf8e4a6f4eec0a650'
-# Home Network Public Key ID for protecting with SUCI Profile A
+# Home Network Public Key ID for protecting with SUCI Profile A or B
 homeNetworkPublicKeyId: 1
 # Routing Indicator
 routingIndicator: '0000'
